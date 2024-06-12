@@ -13,6 +13,22 @@ return {
           grr = false,
         },
       },
+      config = {
+        clangd = {
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--all-scopes-completion",
+            "--completion-style=detailed",
+            "--j=8",
+            "--pch-storage=memory",
+          },
+          capabilities = {
+            offsetEncoding = "utf-8",
+          },
+        },
+      },
     },
   },
 
@@ -56,7 +72,7 @@ return {
     "AstroNvim/astrolsp",
     ---@param opts AstroLSPOpts
     opts = function(_, opts)
-      opts.mappings.n.gd[1] = function() vim.api.nvim_command('Lspsaga goto_definition')  end
+      opts.mappings.n.gd[1] = function() vim.api.nvim_command "Lspsaga goto_definition" end
       opts.mappings.n.gI[1] = function() require("telescope.builtin").lsp_implementations { reuse_win = true } end
       opts.mappings.n.gr[1] = function() require("telescope.builtin").lsp_references() end
       opts.mappings.n.gy[1] = function() require("telescope.builtin").lsp_type_definitions { reuse_win = true } end
