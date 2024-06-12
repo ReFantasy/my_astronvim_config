@@ -35,4 +35,22 @@ return {
       })
     end,
   },
+  {
+    "AstroNvim/astrolsp",
+    ---@type AstroLSPOpts
+    opts = {
+      formatting = {
+        format_on_save = false, -- enable or disable automatic formatting on save
+      },
+    },
+  },
+  -- 添加自动安装的 lsp and formatter 列表
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = function(_, opts) opts.ensure_installed = { "pylsp", "clangd", "cmake" } end,
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    opts = function(_, opts) opts.ensure_installed = { "black", "clang-format" } end,
+  },
 }
